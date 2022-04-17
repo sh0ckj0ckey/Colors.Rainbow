@@ -100,22 +100,22 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AndroidColors.xaml.cs">
+    <Compile Include="Views\AndroidColors.xaml.cs">
       <DependentUpon>AndroidColors.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EveryColor.cs" />
+    <Compile Include="Models\EveryColor.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MDColor.cs" />
-    <Compile Include="MDColorInfo.xaml.cs">
+    <Compile Include="Models\MDColor.cs" />
+    <Compile Include="Views\MDColorInfo.xaml.cs">
       <DependentUpon>MDColorInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowsColors.xaml.cs">
+    <Compile Include="Views\WindowsColors.xaml.cs">
       <DependentUpon>WindowsColors.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -187,7 +187,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AndroidColors.xaml">
+    <Page Include="Views\AndroidColors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,11 +195,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="MDColorInfo.xaml">
+    <Page Include="Views\MDColorInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowsColors.xaml">
+    <Page Include="Views\WindowsColors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
