@@ -5,7 +5,6 @@
     xmlns:local="using:SeeColors_UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="Transparent">
     <Page.Transitions>
@@ -134,15 +133,15 @@
                     <ColumnDefinition Width="96"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <toolkit:DropShadowPanel Grid.Column="1" BlurRadius="5" Color="Black" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Image Source="Assets/Icon/mdlogo.png" Height="48"/>
-                </toolkit:DropShadowPanel>
-                <toolkit:DropShadowPanel Grid.Column="2" BlurRadius="5" Color="Black" VerticalAlignment="Center" HorizontalAlignment="Left">
+                </Grid>
+                <Grid Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left">
                     <TextBlock Grid.Column="1" Text="Material Design" FontSize="24"/>
-                </toolkit:DropShadowPanel>
+                </Grid>
             </Grid>
             <Grid Grid.Row="1" Margin="32,0,0,108" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                <toolkit:WrapPanel>
+                <ItemsStackPanel>
                     <Grid Height="auto" Width="auto">
                         <Ellipse Height="62" Width="62" Margin="13" Fill="#F44336"/>
                         <TextBlock Foreground="White" Text="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -238,7 +237,7 @@
                         <TextBlock Foreground="White" Text="Blue&#13;Grey" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Button x:Name="BlueGreyButton" Style="{StaticResource EllipseBtn}" BorderThickness="0" Height="64" Width="64" Margin="12" Background="#607D8B" ToolTipService.ToolTip="Blue Grey" Click="BlueGreyButton_Click"/>
                     </Grid>
-                </toolkit:WrapPanel>
+                </ItemsStackPanel>
             </Grid>
             <!--<Grid x:Name="InfoColorGrid"
                   Grid.Column="1"

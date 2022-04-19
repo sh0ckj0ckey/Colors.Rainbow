@@ -145,28 +145,6 @@ namespace SeeColors_UWP
         #endregion
 
         /// <summary>
-        /// 重置页面
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void abb1_Click(object sender, RoutedEventArgs e)
-        {
-            //WindowsColors.Current.searchBox.Text = "";
-            //rSlider.Value = 0;
-            //gSlider.Value = 0;
-            //bSlider.Value = 0;
-            this.Frame.Navigate(typeof(MainPage));
-            if (mode == true)
-            {
-                PreviewFrame.Navigate(typeof(WindowsColors));
-            }
-            else
-            {
-                PreviewFrame.Navigate(typeof(AndroidColors));
-            }
-        }
-
-        /// <summary>
         /// 切换到英文
         /// </summary>
         /// <param name="sender"></param>

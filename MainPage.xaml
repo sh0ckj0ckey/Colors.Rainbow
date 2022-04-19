@@ -1,13 +1,10 @@
-﻿<Page
-    x:Class="SeeColors_UWP.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SeeColors_UWP"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
-    xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
-    mc:Ignorable="d">
+﻿<Page x:Class="SeeColors_UWP.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:SeeColors_UWP"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
     <Page.Resources>
         <Storyboard x:Name="RGBShowSuccess">
             <DoubleAnimation From="0" To="1" Duration="00:00:0.2"
@@ -234,7 +231,7 @@
 
     <Grid>
         <Grid.Background>
-            <Windows10FallCreatorsUpdate:AcrylicBrush x:Name="BackgroundAcrylicBrush" FallbackColor="Transparent" TintColor="White" TintOpacity="0.7" BackgroundSource="HostBackdrop"/>
+            <AcrylicBrush x:Name="BackgroundAcrylicBrush" FallbackColor="Transparent" TintColor="White" TintOpacity="0.7" BackgroundSource="HostBackdrop"/>
         </Grid.Background>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
@@ -275,61 +272,43 @@
                   Background="{ThemeResource SystemControlBackgroundAccentBrush}">
                 <TextBlock x:Name="title"
                            Grid.Row="0"
-                           Text="Paint A Rainbow"
+                           Text="Colors.Rainbow"
                            FontWeight="Bold"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="32"
                            Margin="12,32,0,0"
                            Foreground="White"/>
-                <Button Style="{StaticResource EllipseBtn}"
-                    x:Name="ResetButton"
-                    Grid.Row="1"
-                    Visibility="Visible"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Width="42"
-                    Height="42"
-                    BorderThickness="0"
-                    Margin="0,32,102,0"
-                    Click="abb1_Click"
-                    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                    ToolTipService.ToolTip="Reset (重置)">
-                    <SymbolIcon x:Name="refreshIcon"
-                                Symbol="Refresh"
-                                Foreground="White" 
-                                Margin="-2,2,-2,0"/>
-                </Button>
                 <Button Style="{StaticResource EllipseBtn}" 
-                    x:Name="ThemeButton"
-                    Grid.Row="1"
-                    Visibility="Visible"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Width="42"
-                    Height="42"
-                    BorderThickness="0"
-                    Margin="0,32,56,0"
-                    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                    ToolTipService.ToolTip="Theme (主题)"
-                    Click="abb4_Click">
+                        x:Name="ThemeButton"
+                        Grid.Row="1"
+                        Visibility="Visible"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Width="42"
+                        Height="42"
+                        BorderThickness="0"
+                        Margin="0,32,56,0"
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                        ToolTipService.ToolTip="主题(Theme)"
+                        Click="abb4_Click">
                     <Grid Margin="-12">
                         <TextBlock x:Name="SwitchDarkTextBlock" Visibility="Visible" Text="&#xE28C;" FontFamily="Segoe UI Symbol" Foreground="White" FontSize="24" Margin="0,0,0,4"/>
                         <TextBlock x:Name="SwitchLightTextBlock" Visibility="Collapsed" Text="&#xE284;" FontFamily="Segoe UI Symbol" Foreground="White" FontSize="21"/>
                     </Grid>
                 </Button>
                 <Button Style="{StaticResource EllipseBtn}" 
-                    x:Name="LanguageButton"
-                    Grid.Row="1"
-                    Visibility="Visible"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Width="42"
-                    Height="42"
-                    BorderThickness="0"
-                    Margin="0,32,12,0"
-                    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                    ToolTipService.ToolTip="Language (语言)">
+                        x:Name="LanguageButton"
+                        Grid.Row="1"
+                        Visibility="Visible"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Width="42"
+                        Height="42"
+                        BorderThickness="0"
+                        Margin="0,32,12,0"
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                        ToolTipService.ToolTip="语言(Language)">
                     <SymbolIcon x:Name="languageIcon"
                                 Symbol="Globe"
                                 Foreground="White" 
@@ -350,9 +329,9 @@
                     Width="42"
                     Height="42"
                     BorderThickness="0"
-                    Margin="0,32,148,0"
+                    Margin="0,32,104,0"
                     Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                    ToolTipService.ToolTip="Mode (模式)"
+                    ToolTipService.ToolTip="模式(Mode)"
                     Click="abb3_Click">
                     <Image x:Name="modeIcon"
                            Source="Assets/Icon/android.png"
@@ -378,12 +357,6 @@
                     <Frame x:Name="PreviewFrame"/>
                 </PivotItem>
                 <PivotItem x:Name="PalletePivotItem" Header="调色">
-                    <!--<PivotItem.Header>
-                        <TextBlock x:Name="header2"
-                                   Text="RGB调色"
-                                   PointerEntered="header2_PointerEntered"
-                                   PointerExited="header2_PointerExited"/>
-                    </PivotItem.Header>-->
                     <Grid Width="700"
                           Height="auto"
                           HorizontalAlignment="Center"
@@ -491,12 +464,6 @@
                     </Grid>
                 </PivotItem>
                 <PivotItem x:Name="AboutPivotItem" Header="关于">
-                    <!--<PivotItem.Header>
-                        <TextBlock x:Name="header3"
-                                   Text="关于"
-                                   PointerEntered="header3_PointerEntered"
-                                   PointerExited="header3_PointerExited"/>
-                    </PivotItem.Header>-->
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
@@ -517,13 +484,13 @@
                                        FontWeight="Bold"
                                        FontSize="24"/>
                             <TextBlock x:Name="VersionTextBlock"
-                                       Text="v 2.1.0"
+                                       Text="v 2.2.0"
                                        HorizontalAlignment="Center"
                                        FontSize="16"
                                        Opacity="0.7"/>
                         </StackPanel>
                         <TextBlock Grid.Row="3"
-                                   Text="2016-2018 NoMewing."
+                                   Text="2016-2022 sh0ckj0ckey."
                                    TextWrapping="WrapWholeWords"
                                    FontFamily="Consolas"
                                    VerticalAlignment="Bottom"

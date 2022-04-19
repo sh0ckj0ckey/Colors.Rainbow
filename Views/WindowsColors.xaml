@@ -5,7 +5,6 @@
     xmlns:local="using:SeeColors_UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:Windows10FallCreatorsUpdate="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 5)"
     mc:Ignorable="d"
     Background="Transparent">
@@ -453,14 +452,12 @@
                        Stretch="Fill"
                        Opacity="1"
                        Tapped="Rectangle_Tapped"/>
-            <toolkit:DropShadowPanel x:Name="InfoDropShadowPanel"
-                                     Grid.Row="1"
-                                     Grid.Column="1"
-                                     BlurRadius="12"
-                                     OffsetZ="12"
-                                     Color="#AA000000"
-                                     VerticalAlignment="Center"
-                                     HorizontalAlignment="Center">
+            <Border x:Name="InfoDropShadowPanel"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    CornerRadius="6"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
                 <Grid x:Name="InfoColorGrid"
                       Grid.Column="1"
                       Grid.Row="1"
@@ -603,7 +600,7 @@
                                Margin="348,24,0,0"
                                Visibility="Collapsed"/>
                 </Grid>
-            </toolkit:DropShadowPanel>
+            </Border>
         </Grid>
     </Grid>
 </Page>

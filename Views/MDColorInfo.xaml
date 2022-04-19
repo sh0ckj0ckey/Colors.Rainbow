@@ -5,7 +5,6 @@
     xmlns:local="using:SeeColors_UWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="Transparent">
     <Page.Transitions>
@@ -131,15 +130,15 @@
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <toolkit:DropShadowPanel BlurRadius="5" ShadowOpacity="0.7" Color="Black" VerticalAlignment="Top" Margin="18,12">
+                            <Border VerticalAlignment="Top" Margin="18,12">
                                 <TextBlock VerticalAlignment="Top" FontSize="28" Foreground="White" Text="{x:Bind Name}"/>
-                            </toolkit:DropShadowPanel>
-                            <toolkit:DropShadowPanel BlurRadius="1" ShadowOpacity="0.9" Color="Black" VerticalAlignment="Bottom" Margin="18,18" Opacity="0.9">
+                            </Border>
+                            <Border VerticalAlignment="Bottom" Margin="18,18" Opacity="0.9">
                                 <TextBlock VerticalAlignment="Bottom" FontSize="21" Foreground="White" Text="{x:Bind Hex}"/>
-                            </toolkit:DropShadowPanel>
-                            <toolkit:DropShadowPanel Grid.Column="1" BlurRadius="10" ShadowOpacity="0.6" Color="Black" Margin="24,0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            </Border>
+                            <Border Margin="24,0" HorizontalAlignment="Right" VerticalAlignment="Center">
                                 <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="36" Foreground="White" FontFamily="Segoe MDL2 Assets" Text="&#xE16F;"/>
-                            </toolkit:DropShadowPanel>
+                            </Border>
                         </Grid>
                     </DataTemplate>
                 </GridView.ItemTemplate>
