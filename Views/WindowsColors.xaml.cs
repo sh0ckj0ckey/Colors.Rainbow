@@ -29,10 +29,10 @@ namespace SeeColors_UWP
         public static WindowsColors Current;
 
         //AllColors存储所有的颜色，不会改变，ColorsList存储的是GridView要显示的颜色
-        public ObservableCollection<EveryColor> ColorsList = new ObservableCollection<EveryColor>();
-        public ObservableCollection<EveryColor> AllColors = null;
+        public ObservableCollection<WindowsColor> ColorsList = new ObservableCollection<WindowsColor>();
+        public ObservableCollection<WindowsColor> AllColors = null;
         private List<String> suggestions = new List<string>();
-        public EveryColor selecetedColor;
+        public WindowsColor selecetedColor;
 
         public WindowsColors()
         {
@@ -106,11 +106,11 @@ namespace SeeColors_UWP
         /// 加载所有的颜色到集合中
         /// </summary>
         /// <returns></returns>
-        public ObservableCollection<EveryColor> GetCollectionAll()
+        public ObservableCollection<WindowsColor> GetCollectionAll()
         {
             if (AllColors == null)
             {
-                AllColors = new ObservableCollection<EveryColor>();
+                AllColors = new ObservableCollection<WindowsColor>();
                 Type t = typeof(Colors);
                 PropertyInfo[] properties = t.GetProperties();
                 foreach (PropertyInfo property in properties)
@@ -118,13 +118,13 @@ namespace SeeColors_UWP
                     string method = "get_" + property.Name;
                     MethodInfo get_method = t.GetMethod(method);
                     Color getColor = (Color)get_method.Invoke(this, null);
-                    EveryColor ec = new EveryColor
+                    WindowsColor ec = new WindowsColor
                     {
                         Name = property.Name,
                         RValue = getColor.R,
                         GValue = getColor.G,
                         BValue = getColor.B,
-                        HEX = getColor.ToString(),
+                        Hex = getColor.ToString(),
                         VisualColor = getColor
                     };
                     AllColors.Add(ec);
@@ -230,7 +230,7 @@ namespace SeeColors_UWP
             GTextBlock.Text = selecetedColor.GValue.ToString();
             BTextBlock.Text = selecetedColor.BValue.ToString();
             HEXRichEditBox.IsReadOnly = false;
-            HEXRichEditBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, selecetedColor.HEX);
+            HEXRichEditBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, selecetedColor.Hex);
             HEXRichEditBox.IsReadOnly = true;
             InfoGrid.Visibility = Visibility.Visible;
             ShowGridScale.Begin();
@@ -249,7 +249,7 @@ namespace SeeColors_UWP
             try
             {
                 Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
-                dataPackage.SetText(selecetedColor.HEX);
+                dataPackage.SetText(selecetedColor.Hex);
                 Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
                 CopyFailedTextBlock.Visibility = Visibility.Collapsed;
                 CopySuccessTextBlock.Visibility = Visibility.Visible;

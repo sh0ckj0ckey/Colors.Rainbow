@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SeeColors_UWP
 {
-    public class MDColor
+    public class AndroidColor
     {
         public string Name { get; set; }
         public string Hex { get; set; }
 
-        public MDColor(string name, string hex) { this.Name = name; this.Hex = hex; }
+        public AndroidColor(string name, string hex) { this.Name = name; this.Hex = hex; }
     }
 }

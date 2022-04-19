@@ -107,11 +107,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\EveryColor.cs" />
+    <Compile Include="Models\WindowsColor.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\MDColor.cs" />
+    <Compile Include="Models\AndroidColor.cs" />
     <Compile Include="Views\MDColorInfo.xaml.cs">
       <DependentUpon>MDColorInfo.xaml</DependentUpon>
     </Compile>
@@ -130,6 +130,7 @@
   <ItemGroup>
     <Content Include="Assets\ColorsDotRainbow.png" />
     <Content Include="Assets\Icon\android.png" />
+    <Content Include="Assets\Icon\logo.png" />
     <Content Include="Assets\Icon\mdlogo.png" />
     <Content Include="Assets\Icon\windows.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />

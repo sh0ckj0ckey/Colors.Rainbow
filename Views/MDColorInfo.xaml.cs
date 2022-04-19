@@ -24,15 +24,15 @@ namespace SeeColors_UWP
     /// </summary>
     public sealed partial class MDColorInfo : Page
     {
-        public MDColor selectedColor;
-        public ObservableCollection<MDColor> mDColors = new ObservableCollection<MDColor>();
+        public AndroidColor selectedColor;
+        public ObservableCollection<AndroidColor> mDColors = new ObservableCollection<AndroidColor>();
         public MDColorInfo()
         {
             this.InitializeComponent();
 
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
-            foreach (MDColor item in AllMDColors.AllAllColors[AndroidColors.clickedBtnIndex])
+            foreach (AndroidColor item in AllMDColors.AllAllColors[AndroidColors.clickedBtnIndex])
             {
                 mDColors.Add(item);
             }
@@ -77,7 +77,7 @@ namespace SeeColors_UWP
             if (MDColorsGridView.ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
-                dataPackage.SetText((container.Content as MDColor).Hex);
+                dataPackage.SetText((container.Content as AndroidColor).Hex);
                 Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
 
                 if (MainPage.SettingContainer.Values["language"] == null || MainPage.SettingContainer.Values["language"].ToString() == "en_US")

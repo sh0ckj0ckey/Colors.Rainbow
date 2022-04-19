@@ -124,7 +124,7 @@
                       HorizontalContentAlignment="Stretch"
                       ItemClick="ListView_ItemClick">
                 <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="local:MDColor">
+                    <DataTemplate x:DataType="local:AndroidColor">
                         <Grid Height="96" Width="432" Margin="0" CornerRadius="3" Background="{x:Bind Hex}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"/>
