@@ -141,7 +141,7 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="1" Margin="32,0,0,108" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                <ItemsStackPanel>
+                <StackPanel>
                     <Grid Height="auto" Width="auto">
                         <Ellipse Height="62" Width="62" Margin="13" Fill="#F44336"/>
                         <TextBlock Foreground="White" Text="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -237,7 +237,7 @@
                         <TextBlock Foreground="White" Text="Blue&#13;Grey" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Button x:Name="BlueGreyButton" Style="{StaticResource EllipseBtn}" BorderThickness="0" Height="64" Width="64" Margin="12" Background="#607D8B" ToolTipService.ToolTip="Blue Grey" Click="BlueGreyButton_Click"/>
                     </Grid>
-                </ItemsStackPanel>
+                </StackPanel>
             </Grid>
             <!--<Grid x:Name="InfoColorGrid"
                   Grid.Column="1"
