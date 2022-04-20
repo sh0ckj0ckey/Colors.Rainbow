@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="SeeColors.App">
-      <uap:VisualElements DisplayName="Colors.Rainbow" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="对于C#开发者，有时需要一些颜色，但很多时候你只能看到每个颜色的名字，却不能看到它究竟是什么样的颜色，所以使用这个应用可以预览Colors类中每个属性对应的颜色，或者RGB值对应的颜色，方便你挑选喜欢的颜色。" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Colors.Rainbow" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="对于C#开发者，有时需要一些颜色，但很多时候你只能看到每个颜色的名字，却不能看到它究竟是什么样的颜色，所以使用这个应用可以预览Colors类中每个属性对应的颜色，或者RGB值对应的颜色，方便你挑选喜欢的颜色。" BackgroundColor="#5e3f25">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Colors.Rainbow" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -23,7 +23,7 @@
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="transparent"/>
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="portrait" />
           <uap:Rotation Preference="landscape" />

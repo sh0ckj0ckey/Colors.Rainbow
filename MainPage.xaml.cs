@@ -138,9 +138,9 @@ namespace SeeColors_UWP
 
         private void UpdateSliderHeader()
         {
-            rSlider.Header = "R = " + rSlider.Value + "  ," + (rSlider.Value / (rSlider.Value + gSlider.Value + bSlider.Value)).ToString("0.00");
-            gSlider.Header = "G = " + gSlider.Value + "  ," + (gSlider.Value / (rSlider.Value + gSlider.Value + bSlider.Value)).ToString("0.00");
-            bSlider.Header = "B = " + bSlider.Value + "  ," + (bSlider.Value / (rSlider.Value + gSlider.Value + bSlider.Value)).ToString("0.00");
+            rSlider.Header = "R = " + rSlider.Value + ", " + (rSlider.Value / (rSlider.Value + gSlider.Value + bSlider.Value)).ToString("0.00");
+            gSlider.Header = "G = " + gSlider.Value + ", " + (gSlider.Value / (rSlider.Value + gSlider.Value + bSlider.Value)).ToString("0.00");
+            bSlider.Header = "B = " + bSlider.Value + ", " + (bSlider.Value / (rSlider.Value + gSlider.Value + bSlider.Value)).ToString("0.00");
         }
         #endregion
 
