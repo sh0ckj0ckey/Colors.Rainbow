@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="SeeColors_UWP.AndroidColorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SeeColors_UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:vt="using:SeeColors"
+    mc:Ignorable="d"
+    Background="Transparent"
+    NavigationCacheMode="Required">
+    <Page.Resources>
+        <vt:BackgroundToForegroundConverter x:Key="vtBk2Fr"/>
+    </Page.Resources>
+    <Page.Transitions>
+        <TransitionCollection>
+            <NavigationThemeTransition x:Name="navigationTransition">
+                <EntranceNavigationTransitionInfo />
+            </NavigationThemeTransition>
+        </TransitionCollection>
+    </Page.Transitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="16">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="VisualStateGroup">
+                    <VisualState x:Name="PC">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="848"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="PickComboBox.Width" Value="256"/>
+                            <Setter Target="PickComboBox.HorizontalAlignment" Value="Left"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Tablet">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="576"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="PickComboBox.Width" Value="256"/>
+                            <Setter Target="PickComboBox.HorizontalAlignment" Value="Left"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Phone">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="0"/>
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Target="PickComboBox.Width" Value="auto"/>
+                            <Setter Target="PickComboBox.HorizontalAlignment" Value="Stretch"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <Image VerticalAlignment="Center" Source="/Assets/Icon/mdlogo.png" Height="36"/>
+                <TextBlock VerticalAlignment="Center" Text="Material Design" Margin="8,0,0,0" FontWeight="Black" FontSize="22"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Margin="32,0,0,0" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <GridView IsItemClickEnabled="True"
+                          SelectionMode="None"
+                          ItemsSource="{x:Bind ViewModel.vAndroidColors}"
+                          ItemClick="GridView_ItemClick">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="local:AndroidColor">
+                            <Grid Height="auto" Width="auto">
+                                <Ellipse Height="62" Width="62" Margin="12" Fill="{x:Bind Hex}"/>
+                                <TextBlock MaxWidth="56" Foreground="{x:Bind Hex,Converter={StaticResource vtBk2Fr}}" Text="{x:Bind Name}" TextWrapping="WrapWholeWords" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

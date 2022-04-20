@@ -159,7 +159,7 @@ namespace SeeColors_UWP
             }
             else
             {
-                PreviewFrame.Navigate(typeof(AndroidColors));
+                PreviewFrame.Navigate(typeof(AndroidColorsPage));
             }
         }
 
@@ -178,7 +178,7 @@ namespace SeeColors_UWP
             }
             else
             {
-                PreviewFrame.Navigate(typeof(AndroidColors));
+                PreviewFrame.Navigate(typeof(AndroidColorsPage));
             }
         }
 
@@ -229,7 +229,7 @@ namespace SeeColors_UWP
             }
             else
             {
-                PreviewFrame.Navigate(typeof(AndroidColors));
+                PreviewFrame.Navigate(typeof(AndroidColorsPage));
             }
         }
 
@@ -244,12 +244,13 @@ namespace SeeColors_UWP
             if (SettingContainer.Values["theme"].ToString() == "dark")
             {
                 Switch2Dark();
+                WindowsColors.Current.RequestedTheme = ElementTheme.Dark;
             }
             else
             {
                 Switch2Light();
+                WindowsColors.Current.RequestedTheme = ElementTheme.Light;
             }
-            this.Frame.Navigate(typeof(MainPage));
         }
 
         private void Switch2Dark()
@@ -257,8 +258,8 @@ namespace SeeColors_UWP
             this.RequestedTheme = ElementTheme.Dark;
             SwitchDarkTextBlock.Visibility = Visibility.Collapsed;
             SwitchLightTextBlock.Visibility = Visibility.Visible;
-            BackgroundAcrylicBrush.TintColor = Color.FromArgb(128, 0, 0, 0);
-            BackgroundAcrylicBrush.FallbackColor = Color.FromArgb(196, 0, 0, 0);
+            BackgroundAcrylicBrush.TintColor = Color.FromArgb(255, 59, 59, 59);
+            BackgroundAcrylicBrush.FallbackColor = Color.FromArgb(255, 59, 59, 59);
         }
 
         private void Switch2Light()
@@ -266,8 +267,8 @@ namespace SeeColors_UWP
             this.RequestedTheme = ElementTheme.Light;
             SwitchDarkTextBlock.Visibility = Visibility.Visible;
             SwitchLightTextBlock.Visibility = Visibility.Collapsed;
-            BackgroundAcrylicBrush.TintColor = Color.FromArgb(128, 255, 255, 255);
-            BackgroundAcrylicBrush.FallbackColor = Color.FromArgb(128, 255, 255, 255);
+            BackgroundAcrylicBrush.TintColor = Color.FromArgb(255, 255, 255, 255);
+            BackgroundAcrylicBrush.FallbackColor = Color.FromArgb(255, 255, 255, 255);
         }
     }
 }

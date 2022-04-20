@@ -19,79 +19,6 @@
                              BeginTime="00:00:1">
             </DoubleAnimation>
         </Storyboard>
-        <Style x:Key="EllipseBtn" TargetType="Button">
-            <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
-            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
-            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
-            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
-            <Setter Property="Padding" Value="8,4,8,4"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
-            <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
-            <Setter Property="UseSystemFocusVisuals" Value="True"/>
-            <Setter Property="FocusVisualMargin" Value="-3"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Grid x:Name="RootGrid" CornerRadius="100" Background="{TemplateBinding Background}">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal">
-                                        <Storyboard>
-                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="PointerOver">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Pressed">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Disabled">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="RootGrid" Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter x:Name="ContentPresenter" CornerRadius="100" AutomationProperties.AccessibilityView="Raw" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
         <SolidColorBrush x:Key="PivotHeaderSelectedForegroundBrush" Color="White"/>
         <SolidColorBrush x:Key="PivotHeaderUnselectedPressedForegroundBrush" Color="#DDFFFFFF"/>
@@ -231,7 +158,7 @@
 
     <Grid>
         <Grid.Background>
-            <AcrylicBrush x:Name="BackgroundAcrylicBrush" FallbackColor="Transparent" TintColor="White" TintOpacity="0.7" BackgroundSource="HostBackdrop"/>
+            <AcrylicBrush x:Name="BackgroundAcrylicBrush" FallbackColor="White" TintColor="White" TintOpacity="0.9" BackgroundSource="HostBackdrop"/>
         </Grid.Background>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="VisualStateGroup">
@@ -273,20 +200,37 @@
                 <TextBlock x:Name="title"
                            Grid.Row="0"
                            Text="Colors.Rainbow"
-                           FontWeight="Bold"
+                           FontWeight="Medium"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="32"
                            Margin="12,32,0,0"
                            Foreground="White"/>
-                <Button Style="{StaticResource EllipseBtn}" 
-                        x:Name="ThemeButton"
+                <Button x:Name="ModeButton"
                         Grid.Row="1"
                         Visibility="Visible"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Width="42"
                         Height="42"
+                        CornerRadius="21"
+                        BorderThickness="0"
+                        Margin="0,32,104,0"
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                        ToolTipService.ToolTip="模式(Mode)"
+                        Click="abb3_Click">
+                    <Image x:Name="modeIcon"
+                           Source="Assets/Icon/android.png"
+                           Height="48"/>
+                </Button>
+                <Button x:Name="ThemeButton"
+                        Grid.Row="1"
+                        Visibility="Visible"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Width="42"
+                        Height="42"
+                        CornerRadius="21"
                         BorderThickness="0"
                         Margin="0,32,56,0"
                         Background="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -297,14 +241,14 @@
                         <TextBlock x:Name="SwitchLightTextBlock" Visibility="Collapsed" Text="&#xE284;" FontFamily="Segoe UI Symbol" Foreground="White" FontSize="21"/>
                     </Grid>
                 </Button>
-                <Button Style="{StaticResource EllipseBtn}" 
-                        x:Name="LanguageButton"
+                <Button x:Name="LanguageButton"
                         Grid.Row="1"
                         Visibility="Visible"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Width="42"
                         Height="42"
+                        CornerRadius="21"
                         BorderThickness="0"
                         Margin="0,32,12,0"
                         Background="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -314,28 +258,11 @@
                                 Foreground="White" 
                                 Margin="2,2,2,0"/>
                     <Button.Flyout>
-                        <MenuFlyout>
+                        <MenuFlyout Placement="Bottom">
                             <MenuFlyoutItem Text="English" Click="MenuFlyoutItem_Click"/>
                             <MenuFlyoutItem Text="中文" Click="MenuFlyoutItem_Click_1"/>
                         </MenuFlyout>
                     </Button.Flyout>
-                </Button>
-                <Button Style="{StaticResource EllipseBtn}" 
-                    x:Name="ModeButton"
-                    Grid.Row="1"
-                    Visibility="Visible"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Width="42"
-                    Height="42"
-                    BorderThickness="0"
-                    Margin="0,32,104,0"
-                    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                    ToolTipService.ToolTip="模式(Mode)"
-                    Click="abb3_Click">
-                    <Image x:Name="modeIcon"
-                           Source="Assets/Icon/android.png"
-                           Height="48"/>
                 </Button>
             </Grid>
             <Rectangle x:Name="backTitle"
@@ -357,21 +284,19 @@
                     <Frame x:Name="PreviewFrame"/>
                 </PivotItem>
                 <PivotItem x:Name="PalletePivotItem" Header="调色">
-                    <Grid Width="700"
-                          Height="auto"
-                          HorizontalAlignment="Center"
+                    <Grid HorizontalAlignment="Center"
                           VerticalAlignment="Center">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="48"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <HyperlinkButton x:Name="PalleteTitleHyperlinkButton" 
                                          Grid.Row="0"
-                                         HorizontalAlignment="Center"
-                                         Margin="-184,0,0,12"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Center"
                                          Foreground="Black"
                                          Click="PalleteTitleHyperlinkButton_Click">
                             <TextBlock x:Name="PalleteTitleTextBlock" 
@@ -380,9 +305,8 @@
                                        FontWeight="Bold"
                                        FontSize="24"/>
                         </HyperlinkButton>
-                        <Grid x:Name="CopySuccessGrid" Visibility="Collapsed" VerticalAlignment="Center" Width="36" Height="36" Margin="0,0,0,10">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE16F;" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            <TextBlock FontFamily="Segoe UI Emoji" Text="&#x2714;" FontWeight="Bold" FontSize="12" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,4"/>
+                        <Grid x:Name="CopySuccessGrid" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center" Width="36" Height="36" Margin="-20,0,0,0">
+                            <TextBlock FontFamily="Segoe UI Emoji" VerticalAlignment="Center" Text="&#x2714;"/>
                         </Grid>
                         <Grid Grid.Row="1" Margin="0,8">
                             <Grid.RowDefinitions>
@@ -391,28 +315,28 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="108"/>
+                                <ColumnDefinition Width="108"/>
+                                <ColumnDefinition Width="108"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Ellipse x:Name="colorMix1"
                                      Grid.Column="1"
                                      Height="72"
                                      Width="72"
-                                     HorizontalAlignment="Right"
+                                     HorizontalAlignment="Center"
                                      Fill="Black"/>
                             <TextBlock Grid.Column="1"
                                        Grid.Row="1"
                                        Text="100%"
                                        FontWeight="Light"
-                                       HorizontalAlignment="Right"
-                                       FontFamily="Consolas"
-                                       Margin="0,0,18,0"/>
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
+                                       FontFamily="Consolas"/>
                             <Ellipse x:Name="colorMix2"
                                      Grid.Column="2"
-                                     Height="72"
-                                     Width="72"
+                                     Height="64"
+                                     Width="64"
                                      HorizontalAlignment="Center"
                                      Opacity="0.667"
                                      Fill="Black"/>
@@ -420,22 +344,23 @@
                                        Grid.Row="1"
                                        Text="66.7%"
                                        HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
                                        FontFamily="Consolas"
                                        FontWeight="Light"/>
                             <Ellipse x:Name="colorMix3"
                                      Grid.Column="3"
-                                     Height="72"
-                                     Width="72"
-                                     HorizontalAlignment="Left"
+                                     Height="56"
+                                     Width="56"
+                                     HorizontalAlignment="Center"
                                      Opacity="0.333"
                                      Fill="Black"/>
                             <TextBlock Grid.Column="3"
                                        Grid.Row="1"
                                        Text="33.3%"
-                                       HorizontalAlignment="Left"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Bottom"
                                        FontFamily="Consolas"
-                                       FontWeight="Light"
-                                       Margin="18,0,0,0"/>
+                                       FontWeight="Light"/>
                         </Grid>
                         <Slider x:Name="rSlider"
                                 Grid.Row="2"

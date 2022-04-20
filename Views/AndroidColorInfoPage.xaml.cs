@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -22,21 +24,30 @@ namespace SeeColors_UWP
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class MDColorInfo : Page
+    public sealed partial class AndroidColorInfoPage : Page, INotifyPropertyChanged
     {
-        public AndroidColor selectedColor;
-        public ObservableCollection<AndroidColor> mDColors = new ObservableCollection<AndroidColor>();
-        public MDColorInfo()
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        private AndroidColor _SelectedColor = null;
+        AndroidColor SelectedColor
+        {
+            get => _SelectedColor;
+            set
+            {
+                if (_SelectedColor != value)
+                {
+                    _SelectedColor = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public AndroidColorInfoPage()
         {
             this.InitializeComponent();
-
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-
-            foreach (AndroidColor item in AllMDColors.AllAllColors[AndroidColors.clickedBtnIndex])
-            {
-                mDColors.Add(item);
-            }
-            TitleTextBlock.Text = AndroidColors.clickedBtnName;
         }
 
         /// <summary>
@@ -48,6 +59,10 @@ namespace SeeColors_UWP
             if (e.Parameter is Windows.UI.Xaml.Media.Animation.NavigationTransitionInfo transition)
             {
                 navigationTransition.DefaultNavigationTransitionInfo = transition;
+            }
+            else if (e.Parameter is AndroidColor color)
+            {
+                SelectedColor = color;
             }
         }
 
@@ -64,7 +79,7 @@ namespace SeeColors_UWP
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AndroidColors));
+            this.Frame.Navigate(typeof(AndroidColorsPage));
         }
 
         /// <summary>
@@ -77,7 +92,7 @@ namespace SeeColors_UWP
             if (MDColorsGridView.ContainerFromItem(e.ClickedItem) is GridViewItem container)
             {
                 Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
-                dataPackage.SetText((container.Content as AndroidColor).Hex);
+                dataPackage.SetText((container.Content as AndroidColorInfo).Hex);
                 Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
 
                 if (MainPage.SettingContainer.Values["language"] == null || MainPage.SettingContainer.Values["language"].ToString() == "en_US")

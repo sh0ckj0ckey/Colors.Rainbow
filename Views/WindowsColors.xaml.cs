@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,48 +26,62 @@ namespace SeeColors_UWP
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class WindowsColors : Page
+    public sealed partial class WindowsColors : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        private SeeColors.ViewModel.RainbowViewModel _viewModel = null;
+        SeeColors.ViewModel.RainbowViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
+                if (_viewModel != value)
+                {
+                    _viewModel = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public static WindowsColors Current;
 
-        //AllColors存储所有的颜色，不会改变，ColorsList存储的是GridView要显示的颜色
+        //VM存储所有的颜色，不会改变，ColorsList存储的是GridView要显示的颜色
         public ObservableCollection<WindowsColor> ColorsList = new ObservableCollection<WindowsColor>();
-        public ObservableCollection<WindowsColor> AllColors = null;
-        private List<String> suggestions = new List<string>();
-        public WindowsColor selecetedColor;
+        public WindowsColor SelectedColor;
 
         public WindowsColors()
         {
             this.InitializeComponent();
             Current = this;
             SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
+
+            ViewModel = SeeColors.ViewModel.RainbowViewModel.Instance;
+
             if (MainPage.SettingContainer.Values["language"] == null || MainPage.SettingContainer.Values["language"].ToString() == "en_US")
-            {
                 Switch2EN();
-            }
             else
-            {
                 Switch2CN();
-            }
+
             if (MainPage.SettingContainer.Values["theme"] == null || MainPage.SettingContainer.Values["theme"].ToString() == "light")
-            {
                 Switch2Light();
-            }
             else
-            {
                 Switch2Dark();
-            }
-            AllColors = GetCollectionAll();
-            foreach (var item in AllColors)
+
+            foreach (var item in ViewModel.vWindowsColors)
             {
                 ColorsList.Add(item);
             }
 
+            SharedShadow.Receivers.Add(BackgroundGrid);
+            InfoColorGrid.Translation += new System.Numerics.Vector3(0, 0, 16);
         }
 
         private void OnBackRequested(object sender, BackRequestedEventArgs e)
         {
-            if (InfoGrid.Visibility==Visibility.Visible)
+            if (InfoGrid.Visibility == Visibility.Visible)
             {
                 HideGridScale.Begin();
             }
@@ -102,79 +118,11 @@ namespace SeeColors_UWP
             }
         }
 
-        /// <summary>
-        /// 加载所有的颜色到集合中
-        /// </summary>
-        /// <returns></returns>
-        public ObservableCollection<WindowsColor> GetCollectionAll()
-        {
-            if (AllColors == null)
-            {
-                AllColors = new ObservableCollection<WindowsColor>();
-                Type t = typeof(Colors);
-                PropertyInfo[] properties = t.GetProperties();
-                foreach (PropertyInfo property in properties)
-                {
-                    string method = "get_" + property.Name;
-                    MethodInfo get_method = t.GetMethod(method);
-                    Color getColor = (Color)get_method.Invoke(this, null);
-                    WindowsColor ec = new WindowsColor
-                    {
-                        Name = property.Name,
-                        RValue = getColor.R,
-                        GValue = getColor.G,
-                        BValue = getColor.B,
-                        Hex = getColor.ToString(),
-                        VisualColor = getColor
-                    };
-                    AllColors.Add(ec);
-                }
-            }
-            return AllColors;
-        }
-
-        /// <summary>
-        /// 开始搜索
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void searchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            suggestions.Clear();
-            suggestions = AllColors.Where(p => p.Name.StartsWith(sender.Text, StringComparison.CurrentCultureIgnoreCase)).Select(p => p.Name).ToList();
-            searchBox.ItemsSource = suggestions;
-            var filteredColor = AllColors.Where(p => p.Name.StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase)).ToList();
-            ColorsList.Clear();
-            filteredColor.ForEach(p => ColorsList.Add(p));
-            if (ColorsList.Count <= 0)
-            {
-                notFound.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                notFound.Visibility = Visibility.Collapsed;
-            }
-        }
-        private void searchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
-        {
-            var filteredColor = AllColors.Where(p => p.Name.StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase)).ToList();
-            ColorsList.Clear();
-            filteredColor.ForEach(p => ColorsList.Add(p));
-            if (ColorsList.Count <= 0)
-            {
-                notFound.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                notFound.Visibility = Visibility.Collapsed;
-            }
-        }
-
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (listView.SelectedIndex != -1)
             {
-                selecetedColor = ColorsList[listView.SelectedIndex];
+                SelectedColor = ColorsList[listView.SelectedIndex];
                 ShowInfo();
             }
         }
@@ -183,7 +131,7 @@ namespace SeeColors_UWP
         {
             if (gridView.SelectedIndex != -1)
             {
-                selecetedColor = ColorsList[gridView.SelectedIndex];
+                SelectedColor = ColorsList[gridView.SelectedIndex];
                 ShowInfo();
             }
         }
@@ -217,20 +165,29 @@ namespace SeeColors_UWP
         /// </summary>
         public void ShowInfo()
         {
-            SolidColorBrush solidColorBrush = new SolidColorBrush(selecetedColor.VisualColor);
+            SolidColorBrush solidColorBrush = new SolidColorBrush(SelectedColor.VisualColor);
             InfoColor1Ellipse.Fill = solidColorBrush;
             InfoColor2Ellipse.Fill = solidColorBrush;
             InfoColor3Ellipse.Fill = solidColorBrush;
-            InfoColorGrid.BorderBrush = solidColorBrush;
-            InfoNameTextBlock.Text = selecetedColor.Name;
-            RGrid.Width = (selecetedColor.RValue / (selecetedColor.RValue + selecetedColor.GValue + selecetedColor.BValue)) * RGBBarGrid.Width;
-            GGrid.Width = (selecetedColor.GValue / (selecetedColor.RValue + selecetedColor.GValue + selecetedColor.BValue)) * RGBBarGrid.Width;
-            BGrid.Width = (selecetedColor.BValue / (selecetedColor.RValue + selecetedColor.GValue + selecetedColor.BValue)) * RGBBarGrid.Width;
-            RTextBlock.Text = selecetedColor.RValue.ToString();
-            GTextBlock.Text = selecetedColor.GValue.ToString();
-            BTextBlock.Text = selecetedColor.BValue.ToString();
+            InfoNameTextBlock.Text = SelectedColor.Name;
+            double total = SelectedColor.RValue + SelectedColor.GValue + SelectedColor.BValue;
+            if (total > 0)
+            {
+                RGrid.Width = (SelectedColor.RValue / total) * RGBBarGrid.Width;
+                GGrid.Width = (SelectedColor.GValue / total) * RGBBarGrid.Width;
+                BGrid.Width = (SelectedColor.BValue / total) * RGBBarGrid.Width;
+            }
+            else
+            {
+                RGrid.Width = 16;
+                GGrid.Width = 16;
+                BGrid.Width = 16;
+            }
+            RTextBlock.Text = SelectedColor.RValue.ToString();
+            GTextBlock.Text = SelectedColor.GValue.ToString();
+            BTextBlock.Text = SelectedColor.BValue.ToString();
             HEXRichEditBox.IsReadOnly = false;
-            HEXRichEditBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, selecetedColor.Hex);
+            HEXRichEditBox.Document.SetText(Windows.UI.Text.TextSetOptions.None, SelectedColor.Hex);
             HEXRichEditBox.IsReadOnly = true;
             InfoGrid.Visibility = Visibility.Visible;
             ShowGridScale.Begin();
@@ -249,7 +206,7 @@ namespace SeeColors_UWP
             try
             {
                 Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
-                dataPackage.SetText(selecetedColor.Hex);
+                dataPackage.SetText(SelectedColor.Hex);
                 Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
                 CopyFailedTextBlock.Visibility = Visibility.Collapsed;
                 CopySuccessTextBlock.Visibility = Visibility.Visible;
@@ -267,9 +224,29 @@ namespace SeeColors_UWP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Rectangle_Tapped(object sender, TappedRoutedEventArgs e)
+        private void Grid_Tapped(object sender, TappedRoutedEventArgs e)
         {
             HideGridScale.Begin();
+        }
+
+        // 搜索颜色
+        private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                var filteredColor = ViewModel.vWindowsColors.Where(p => p.Name.StartsWith(searchBox.Text, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                ColorsList.Clear();
+                filteredColor.ForEach(p => ColorsList.Add(p));
+                if (ColorsList.Count <= 0)
+                {
+                    notFound.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    notFound.Visibility = Visibility.Collapsed;
+                }
+            }
+            catch { }
         }
     }
 }
