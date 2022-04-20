@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="NoMewing.Colors.Rainbow" Publisher="CN=E6D8FAFA-3EF4-4E47-B885-52144C67BFF5" Version="2.2.0.0" />
-  <mp:PhoneIdentity PhoneProductId="6b32df32-fc07-4c47-84ae-6d32a398c543" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="22189NoMewing.Colors.Rainbow" Publisher="CN=E6D8FAFA-3EF4-4E47-B885-52144C67BFF5" Version="2.2.0.0" />
+  <mp:PhoneIdentity PhoneProductId="9169f391-498a-43a8-a52c-c41cd6ec8c5a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Colors.Rainbow</DisplayName>
     <PublisherDisplayName>No Mewing</PublisherDisplayName>
