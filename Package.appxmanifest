@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="22189NoMewing.Colors.Rainbow" Publisher="CN=E6D8FAFA-3EF4-4E47-B885-52144C67BFF5" Version="2.2.0.0" />
+  <Identity Name="22189NoMewing.Colors.Rainbow" Publisher="CN=E6D8FAFA-3EF4-4E47-B885-52144C67BFF5" Version="2.2.1.0" />
   <mp:PhoneIdentity PhoneProductId="9169f391-498a-43a8-a52c-c41cd6ec8c5a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Colors.Rainbow</DisplayName>
@@ -16,7 +16,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="SeeColors.App">
       <uap:VisualElements DisplayName="Colors.Rainbow" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="对于C#开发者，有时需要一些颜色，但很多时候你只能看到每个颜色的名字，却不能看到它究竟是什么样的颜色，所以使用这个应用可以预览Colors类中每个属性对应的颜色，或者RGB值对应的颜色，方便你挑选喜欢的颜色。" BackgroundColor="#5e3f25">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Colors.Rainbow" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="查言观色" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />

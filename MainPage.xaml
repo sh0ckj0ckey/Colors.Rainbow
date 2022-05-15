@@ -391,16 +391,16 @@
                 <PivotItem x:Name="AboutPivotItem" Header="关于">
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
                             <RowDefinition Height="2*"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="3*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
                         <Image x:Name="logo"
                                Grid.Column="1" 
                                Grid.Row="1"
-                               Width="200"
-                               Height="200"
+                               Width="60"
+                               Height="60"
                                Stretch="Uniform"
                                Source="Assets/ColorsDotRainbow.png"/>
                         <StackPanel Grid.Row="2">
@@ -409,7 +409,7 @@
                                        FontWeight="Bold"
                                        FontSize="24"/>
                             <TextBlock x:Name="VersionTextBlock"
-                                       Text="v 2.2.0"
+                                       Text="v 2.2.1"
                                        HorizontalAlignment="Center"
                                        FontSize="16"
                                        Opacity="0.7"/>

@@ -167,7 +167,7 @@
                    Text="没有找到这个颜色"/>
 
         <!--颜色详情弹窗-->
-        <Grid x:Name="InfoGrid" Grid.RowSpan="2" Margin="0,0,0,0" Visibility="Collapsed" HorizontalAlignment="Stretch" Background="Transparent">
+        <Grid x:Name="InfoGrid" Grid.RowSpan="2" Margin="0,0,0,60" Visibility="Collapsed" HorizontalAlignment="Stretch" Background="Transparent">
             <Grid.Resources>
                 <Storyboard x:Name="ShowGridScale">
                     <PopInThemeAnimation FromHorizontalOffset="0" FromVerticalOffset="320" Storyboard.TargetName="InfoColorGrid" Duration="00:00:1"/>
