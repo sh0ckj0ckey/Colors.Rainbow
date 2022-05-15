@@ -409,7 +409,7 @@
                                        FontWeight="Bold"
                                        FontSize="24"/>
                             <TextBlock x:Name="VersionTextBlock"
-                                       Text="v 2.2.1"
+                                       Text="v 2.2.3"
                                        HorizontalAlignment="Center"
                                        FontSize="16"
                                        Opacity="0.7"/>
