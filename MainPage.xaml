@@ -191,8 +191,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="32"/>
-                <RowDefinition Height="64"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="48"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="RealTitleGrid" Grid.Row="0" Background="Transparent"/>
             <Grid x:Name="backTitleGrid" Grid.RowSpan="2"
@@ -203,7 +203,7 @@
                            FontWeight="Medium"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
-                           FontSize="32"
+                           FontSize="32" FontFamily="Consolas"
                            Margin="12,32,0,0"
                            Foreground="White"/>
                 <Button x:Name="ModeButton"
@@ -218,6 +218,8 @@
                         Margin="0,32,104,0"
                         Background="{ThemeResource SystemControlBackgroundAccentBrush}"
                         ToolTipService.ToolTip="模式(Mode)"
+                        FocusVisualPrimaryThickness="0"
+                        FocusVisualSecondaryThickness="0"
                         Click="abb3_Click">
                     <Image x:Name="modeIcon"
                            Source="Assets/Icon/android.png"
@@ -235,6 +237,8 @@
                         Margin="0,32,56,0"
                         Background="{ThemeResource SystemControlBackgroundAccentBrush}"
                         ToolTipService.ToolTip="主题(Theme)"
+                        FocusVisualPrimaryThickness="0"
+                        FocusVisualSecondaryThickness="0"
                         Click="abb4_Click">
                     <Grid Margin="-12">
                         <TextBlock x:Name="SwitchDarkTextBlock" Visibility="Visible" Text="&#xE28C;" FontFamily="Segoe UI Symbol" Foreground="White" FontSize="24" Margin="0,0,0,4"/>
@@ -252,7 +256,9 @@
                         BorderThickness="0"
                         Margin="0,32,12,0"
                         Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-                        ToolTipService.ToolTip="语言(Language)">
+                        ToolTipService.ToolTip="语言(Language)"
+                        FocusVisualPrimaryThickness="0"
+                        FocusVisualSecondaryThickness="0">
                     <SymbolIcon x:Name="languageIcon"
                                 Symbol="Globe"
                                 Foreground="White" 
@@ -399,20 +405,20 @@
                         <Image x:Name="logo"
                                Grid.Column="1" 
                                Grid.Row="1"
-                               Width="60"
-                               Height="60"
+                               Width="80"
+                               Height="80"
                                Stretch="Uniform"
                                Source="Assets/ColorsDotRainbow.png"/>
                         <StackPanel Grid.Row="2">
                             <TextBlock Text="Colors.Rainbow"
                                        HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="24"/>
+                                       FontWeight="Medium"
+                                       FontSize="24" Opacity="0.7"/>
                             <TextBlock x:Name="VersionTextBlock"
-                                       Text="v 2.2.3"
+                                       Text="v 2.3.0" FontWeight="Medium"
                                        HorizontalAlignment="Center"
                                        FontSize="16"
-                                       Opacity="0.7"/>
+                                       Opacity="0.5"/>
                         </StackPanel>
                         <TextBlock Grid.Row="3"
                                    Text="2016-2022 sh0ckj0ckey."
