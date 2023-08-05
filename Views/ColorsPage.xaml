@@ -51,14 +51,14 @@
                 <ThemeShadow x:Name="InfoShadow"/>
             </Grid.Resources>
             <Grid x:Name="BackgroundGrid" Opacity="1" Background="#33000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="OnClickHideInfo"/>
-            <Grid x:Name="InfoColorGrid" CornerRadius="8" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="480" Height="280" HorizontalAlignment="Center" VerticalAlignment="Center" Shadow="{StaticResource InfoShadow}" Translation="0,0,32">
+            <Grid x:Name="InfoColorGrid" CornerRadius="8" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="480" HorizontalAlignment="Center" VerticalAlignment="Center" Shadow="{StaticResource InfoShadow}" Translation="0,0,32">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="48"/>
                     <RowDefinition Height="128"/>
-                    <RowDefinition Height="42"/>
-                    <RowDefinition Height="36"/>
+                    <RowDefinition Height="56"/>
+                    <RowDefinition Height="64"/>
                 </Grid.RowDefinitions>
-                <AppBarButton Grid.Column="1" Grid.Row="0" Margin="0,2,8,0" HorizontalAlignment="Right" VerticalAlignment="Center" Height="38" Width="38" CornerRadius="19" Icon="Cancel" Click="OnClickHideInfo"/>
+                <AppBarButton Grid.Row="0" Margin="0,2,8,0" HorizontalAlignment="Right" VerticalAlignment="Center" Icon="Cancel" Click="OnClickHideInfo"/>
                 <TextBlock x:Name="InfoNameTextBlock" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="26" Margin="16,14,0,0" Text="Colors.Rainbow" FontFamily="Consolas"/>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -84,7 +84,7 @@
                         </Grid>
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center">
+                <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top">
                     <TextBlock Text="HEX" FontWeight="Medium" FontFamily="Consolas" Margin="12,0" VerticalAlignment="Center"/>
                     <TextBox x:Name="HEXTextBox" FontFamily="Consolas" Height="32" Width="96" BorderThickness="0" HorizontalAlignment="Left" Padding="12,8,4,0" Margin="0,0,0,0" IsReadOnly="True" VerticalContentAlignment="Center"/>
                     <Button x:Name="CopyButton" Grid.Row="4" Height="32" Margin="8,0,8,0" Click="CopyButton_Click">
