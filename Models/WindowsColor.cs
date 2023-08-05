@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SeeColors_UWP
+﻿namespace Colors.Rainbow.Models
 {
     public class WindowsColor
     {
@@ -14,5 +8,11 @@ namespace SeeColors_UWP
         public double BValue { get; set; }
         public string Hex { get; set; }
         public Windows.UI.Color VisualColor { get; set; }
+        public WindowsColor Self { get; set; }
+
+        public WindowsColor()
+        {
+            Self = this;
+        }
     }
 }

@@ -1,0 +1,97 @@
+﻿<Page
+    x:Class="Colors.Rainbow.Views.ColorsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Colors.Rainbow.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:model="using:Colors.Rainbow.Models" 
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d" NavigationCacheMode="Required" Background="Transparent">
+
+    <Page.Resources>
+        <ThemeShadow x:Name="CommonShadow"/>
+    </Page.Resources>
+
+    <Grid>
+        <ScrollViewer x:Name="WinColorsScrollViewer" Padding="20,0,18,0">
+            <muxc:ItemsRepeater Margin="0,88,0,20" HorizontalAlignment="Center" ItemsSource="{x:Bind _viewModel.WindowsColors,Mode=OneWay}">
+                <muxc:ItemsRepeater.Layout>
+                    <muxc:UniformGridLayout Orientation="Horizontal" MinItemWidth="186" MinItemHeight="68" MinColumnSpacing="8" MinRowSpacing="8" ItemsStretch="Uniform"/>
+                </muxc:ItemsRepeater.Layout>
+                <DataTemplate x:DataType="model:WindowsColor">
+                    <Button Click="OnClickColorButton" Tag="{x:Bind Self}" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                        <Button.Content>
+                            <Grid Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" Width="48" Height="48" CornerRadius="28" Margin="12,4,0,4" Background="{x:Bind Name}"/>
+                                <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="12,0" FontSize="14" Opacity="0.9" Text="{x:Bind Name}" CharacterSpacing="40"/>
+                            </Grid>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </muxc:ItemsRepeater>
+        </ScrollViewer>
+
+        <Grid x:Name="SearchBox" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Translation="0,0,32" CornerRadius="8" Margin="40,20,40,20" Shadow="{StaticResource CommonShadow}" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <TextBox BorderThickness="0" PlaceholderText="Find a color" TextChanged="OnSearchTextChanged"/>
+        </Grid>
+
+        <Grid x:Name="InfoGrid" Visibility="Collapsed" HorizontalAlignment="Stretch" Background="Transparent">
+            <Grid.Resources>
+                <Storyboard x:Name="ShowGridAnim">
+                    <PopInThemeAnimation FromHorizontalOffset="0" FromVerticalOffset="320" Storyboard.TargetName="InfoColorGrid" Duration="00:00:1"/>
+                </Storyboard>
+                <Storyboard x:Name="HideGridAnim">
+                    <PopOutThemeAnimation Storyboard.TargetName="InfoColorGrid" Duration="00:00:0.1"/>
+                </Storyboard>
+                <ThemeShadow x:Name="InfoShadow"/>
+            </Grid.Resources>
+            <Grid x:Name="BackgroundGrid" Opacity="1" Background="#33000000" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Tapped="OnClickHideInfo"/>
+            <Grid x:Name="InfoColorGrid" CornerRadius="8" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="480" Height="280" HorizontalAlignment="Center" VerticalAlignment="Center" Shadow="{StaticResource InfoShadow}" Translation="0,0,32">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48"/>
+                    <RowDefinition Height="128"/>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="36"/>
+                </Grid.RowDefinitions>
+                <AppBarButton Grid.Column="1" Grid.Row="0" Margin="0,2,8,0" HorizontalAlignment="Right" VerticalAlignment="Center" Height="38" Width="38" CornerRadius="19" Icon="Cancel" Click="OnClickHideInfo"/>
+                <TextBlock x:Name="InfoNameTextBlock" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="26" Margin="16,14,0,0" Text="Colors.Rainbow" FontFamily="Consolas"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Ellipse x:Name="InfoColor1Ellipse" Grid.Column="0" Grid.Row="0" Height="64" Width="64" Fill="DodgerBlue" HorizontalAlignment="Right" VerticalAlignment="Center" Opacity="1"/>
+                    <Ellipse x:Name="InfoColor2Ellipse" Grid.Column="1" Grid.Row="0" Height="64" Width="64" Fill="DodgerBlue" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.66"/>
+                    <Ellipse x:Name="InfoColor3Ellipse" Grid.Column="2" Grid.Row="0" Height="64" Width="64" Fill="DodgerBlue" HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0.33"/>
+                </Grid>
+                <StackPanel Grid.Row="2" Orientation="Horizontal">
+                    <TextBlock Text="RGB" FontWeight="Medium" FontFamily="Consolas" Margin="12,0,12,0" VerticalAlignment="Center"/>
+                    <StackPanel x:Name="RGBBarGrid" Orientation="Horizontal" Width="384" VerticalAlignment="Center" CornerRadius="8">
+                        <Grid x:Name="RGrid" Height="16" Background="Red">
+                            <TextBlock x:Name="RTextBlock" FontSize="12" Foreground="White" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid x:Name="GGrid" Height="16" Background="Green">
+                            <TextBlock x:Name="GTextBlock" FontSize="12" Foreground="White" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid x:Name="BGrid" Height="16" Background="Blue">
+                            <TextBlock x:Name="BTextBlock" FontSize="12" Foreground="White" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="HEX" FontWeight="Medium" FontFamily="Consolas" Margin="12,0" VerticalAlignment="Center"/>
+                    <TextBox x:Name="HEXTextBox" FontFamily="Consolas" Height="32" Width="96" BorderThickness="0" HorizontalAlignment="Left" Padding="12,8,4,0" Margin="0,0,0,0" IsReadOnly="True" VerticalContentAlignment="Center"/>
+                    <Button x:Name="CopyButton" Grid.Row="4" Height="32" Margin="8,0,8,0" Click="CopyButton_Click">
+                        <TextBlock FontFamily="{ThemeResource SymbolThemeFontFamily}" FontSize="12" Text="&#xE16F;"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
