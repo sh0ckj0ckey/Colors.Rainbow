@@ -33,14 +33,7 @@
             <muxc:NavigationView.FooterMenuItems>
                 <muxc:NavigationViewItem Height="64" Width="68" Tag="settings" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <muxc:AnimatedIcon x:Name="SettingsAnimatedIcon" Height="22" Width="22" Margin="-4,0,4,0">
-                            <muxc:AnimatedIcon.Source>
-                                <animatedvisuals:AnimatedSettingsVisualSource/>
-                            </muxc:AnimatedIcon.Source>
-                            <muxc:AnimatedIcon.FallbackIconSource>
-                                <muxc:SymbolIconSource Symbol="Setting"/>
-                            </muxc:AnimatedIcon.FallbackIconSource>
-                        </muxc:AnimatedIcon>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE946;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>

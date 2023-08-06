@@ -31,11 +31,11 @@ namespace Colors.Rainbow.Views
             this.InitializeComponent();
 
             CommonShadow.Receivers.Add(WinColorsScrollViewer);
-            InfoShadow.Receivers.Add(BackgroundGrid);
+            ColorInfoShadow.Receivers.Add(BackgroundGrid);
 
             HideGridAnim.Completed += (s, e) =>
             {
-                InfoGrid.Visibility = Visibility.Collapsed;
+                ColorInfoGrid.Visibility = Visibility.Collapsed;
             };
         }
 
@@ -52,7 +52,7 @@ namespace Colors.Rainbow.Views
             if (sender is Button btn && btn.Tag is WindowsColor color)
             {
                 RainbowViewModel.Instance.SelectedWinColor = color;
-                ShowInfo();
+                ShowColorInfo();
             }
         }
 
@@ -72,31 +72,19 @@ namespace Colors.Rainbow.Views
             catch { }
         }
 
-        public void ShowInfo()
+        public void ShowColorInfo()
         {
             SolidColorBrush solidColorBrush = new SolidColorBrush(RainbowViewModel.Instance.SelectedWinColor.VisualColor);
             InfoColor1Ellipse.Fill = solidColorBrush;
             InfoColor2Ellipse.Fill = solidColorBrush;
             InfoColor3Ellipse.Fill = solidColorBrush;
-            InfoNameTextBlock.Text = RainbowViewModel.Instance.SelectedWinColor.Name;
+
             double total = RainbowViewModel.Instance.SelectedWinColor.RValue + RainbowViewModel.Instance.SelectedWinColor.GValue + RainbowViewModel.Instance.SelectedWinColor.BValue;
-            if (total > 0)
-            {
-                RGrid.Width = (RainbowViewModel.Instance.SelectedWinColor.RValue / total) * RGBBarGrid.Width;
-                GGrid.Width = (RainbowViewModel.Instance.SelectedWinColor.GValue / total) * RGBBarGrid.Width;
-                BGrid.Width = (RainbowViewModel.Instance.SelectedWinColor.BValue / total) * RGBBarGrid.Width;
-            }
-            else
-            {
-                RGrid.Width = 16;
-                GGrid.Width = 16;
-                BGrid.Width = 16;
-            }
-            RTextBlock.Text = RainbowViewModel.Instance.SelectedWinColor.RValue.ToString();
-            GTextBlock.Text = RainbowViewModel.Instance.SelectedWinColor.GValue.ToString();
-            BTextBlock.Text = RainbowViewModel.Instance.SelectedWinColor.BValue.ToString();
-            HEXTextBox.Text = RainbowViewModel.Instance.SelectedWinColor.Hex;
-            InfoGrid.Visibility = Visibility.Visible;
+            RGrid.Width = total > 0 ? (RainbowViewModel.Instance.SelectedWinColor.RValue / total) * RGBBarGrid.Width : 16;
+            GGrid.Width = total > 0 ? (RainbowViewModel.Instance.SelectedWinColor.GValue / total) * RGBBarGrid.Width : 16;
+            BGrid.Width = total > 0 ? (RainbowViewModel.Instance.SelectedWinColor.BValue / total) * RGBBarGrid.Width : 16;
+            
+            ColorInfoGrid.Visibility = Visibility.Visible;
             ShowGridAnim.Begin();
         }
     }
