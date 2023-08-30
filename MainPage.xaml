@@ -21,19 +21,19 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem IsSelected="True" Height="64" Width="68" Tag="windows" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE10F;" FontSize="20" Margin="-4,0,4,0"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;" FontSize="20" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Height="64" Width="68" Tag="palette" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE790;" FontSize="18" Margin="-4,0,4,0"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE790;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.FooterMenuItems>
                 <muxc:NavigationViewItem Height="64" Width="68" Tag="settings" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE946;" FontSize="18" Margin="-4,0,4,0"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE946;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>

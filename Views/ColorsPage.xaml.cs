@@ -79,11 +79,6 @@ namespace Colors.Rainbow.Views
             InfoColor2Ellipse.Fill = solidColorBrush;
             InfoColor3Ellipse.Fill = solidColorBrush;
 
-            double total = RainbowViewModel.Instance.SelectedWinColor.RValue + RainbowViewModel.Instance.SelectedWinColor.GValue + RainbowViewModel.Instance.SelectedWinColor.BValue;
-            RGrid.Width = total > 0 ? (RainbowViewModel.Instance.SelectedWinColor.RValue / total) * RGBBarGrid.Width : 16;
-            GGrid.Width = total > 0 ? (RainbowViewModel.Instance.SelectedWinColor.GValue / total) * RGBBarGrid.Width : 16;
-            BGrid.Width = total > 0 ? (RainbowViewModel.Instance.SelectedWinColor.BValue / total) * RGBBarGrid.Width : 16;
-            
             ColorInfoGrid.Visibility = Visibility.Visible;
             ShowGridAnim.Begin();
         }
