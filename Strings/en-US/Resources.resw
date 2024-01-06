@@ -134,7 +134,7 @@
     <value>Nothing here</value>
   </data>
   <data name="PackageName" xml:space="preserve">
-    <value>Colors.Rainbow - preview colors</value>
+    <value>Colors.Rainbow</value>
   </data>
   <data name="Search.PlaceholderText" xml:space="preserve">
     <value>Find a color</value>

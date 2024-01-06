@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="9169f391-498a-43a8-a52c-c41cd6ec8c5a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>ms-resource:PackageName</DisplayName>
-    <PublisherDisplayName>NoMewing</PublisherDisplayName>
+    <PublisherDisplayName>No Mewing</PublisherDisplayName>
     <Logo>Assets\Manifests\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
