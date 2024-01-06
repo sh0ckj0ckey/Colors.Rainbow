@@ -21,19 +21,24 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem IsSelected="True" Height="64" Width="68" Tag="windows" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE10F;" FontSize="20" Margin="-4,0,4,0"/>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE10F;" FontSize="20" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
                 <muxc:NavigationViewItem Height="64" Width="68" Tag="palette" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE790;" FontSize="18" Margin="-4,0,4,0"/>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE790;" FontSize="18" Margin="-4,0,4,0"/>
+                    </muxc:NavigationViewItem.Content>
+                </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Height="64" Width="68" Tag="favorites" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
+                    <muxc:NavigationViewItem.Content>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE1CB;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.FooterMenuItems>
                 <muxc:NavigationViewItem Height="64" Width="68" Tag="settings" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
-                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE946;" FontSize="18" Margin="-4,0,4,0"/>
+                        <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE946;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>
@@ -51,7 +56,7 @@
             <StackPanel x:Name="AppTitleLogo" Margin="24,0,0,0" Opacity="1" Orientation="Horizontal" VerticalAlignment="Center" IsHitTestVisible="False">
                 <Image HorizontalAlignment="Left" VerticalAlignment="Center" Width="18" Height="18">
                     <Image.Source>
-                        <BitmapImage UriSource="Assets/ColorsDotRainbow.png" DecodePixelHeight="36"/>
+                        <BitmapImage UriSource="Assets/logo_rainbow2.png" DecodePixelHeight="36"/>
                     </Image.Source>
                 </Image>
                 <TextBlock Text="Colors.Rainbow" FontFamily="Consolas" FontSize="14" CharacterSpacing="40" VerticalAlignment="Center" Margin="14,0,0,0"/>

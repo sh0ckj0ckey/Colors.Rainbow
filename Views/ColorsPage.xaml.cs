@@ -61,6 +61,20 @@ namespace Colors.Rainbow.Views
             HideGridAnim.Begin();
         }
 
+        private void FavButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (RainbowViewModel.Instance.CheckFavorite(RainbowViewModel.Instance.SelectedWinColor.Hex))
+            {
+                RainbowViewModel.Instance.RemoveFavorite(RainbowViewModel.Instance.SelectedWinColor.Hex);
+                FavoriteIcon.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                RainbowViewModel.Instance.AddFavorite(RainbowViewModel.Instance.SelectedWinColor.Hex);
+                FavoriteIcon.Visibility = Visibility.Visible;
+            }
+        }
+
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -82,5 +96,6 @@ namespace Colors.Rainbow.Views
             ColorInfoGrid.Visibility = Visibility.Visible;
             ShowGridAnim.Begin();
         }
+
     }
 }

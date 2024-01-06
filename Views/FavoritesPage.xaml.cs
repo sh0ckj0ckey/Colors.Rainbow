@@ -4,10 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Colors.Rainbow.ViewModel;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,26 +21,33 @@ namespace Colors.Rainbow.Views
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class PalettePage : Page
+    public sealed partial class FavoritesPage : Page
     {
         private RainbowViewModel _viewModel = null;
-        public PalettePage()
+        public FavoritesPage()
         {
             _viewModel = RainbowViewModel.Instance;
             this.InitializeComponent();
         }
 
-        private void FavButton_Click(object sender, RoutedEventArgs e)
+        private void OnClickCopy(object sender, RoutedEventArgs e)
         {
-            if (RainbowViewModel.Instance.CheckFavorite(Palette.Color.ToString()))
+            if (sender is MenuFlyoutItem item && item.Tag != null)
             {
-                RainbowViewModel.Instance.RemoveFavorite(Palette.Color.ToString());
-                FavoriteIcon.Visibility = Visibility.Collapsed;
+                string hex = item.Tag.ToString();
+
+                Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
+                dataPackage.SetText(hex);
+                Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
             }
-            else
+        }
+
+        private void OnClickDelete(object sender, RoutedEventArgs e)
+        {
+            if (sender is MenuFlyoutItem item && item.Tag != null)
             {
-                RainbowViewModel.Instance.AddFavorite(Palette.Color.ToString());
-                FavoriteIcon.Visibility = Visibility.Visible;
+                string hex = item.Tag.ToString();
+                RainbowViewModel.Instance.RemoveFavorite(hex);
             }
         }
     }

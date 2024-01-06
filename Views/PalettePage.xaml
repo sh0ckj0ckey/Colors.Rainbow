@@ -6,9 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:converter="using:Colors.Rainbow.Converters"
     mc:Ignorable="d" NavigationCacheMode="Required" Background="Transparent">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <muxc:ColorPicker ColorSpectrumShape="Box"
+
+    <Page.Resources>
+        <converter:Color2FavoriteConverter x:Key="Color2Fav"/>
+    </Page.Resources>
+    
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <muxc:ColorPicker x:Name="Palette" 
+                          ColorSpectrumShape="Box"
                           IsMoreButtonVisible="False"
                           IsColorSliderVisible="True"
                           IsColorChannelTextInputVisible="True"
@@ -18,6 +25,35 @@
                           IsAlphaTextInputVisible="True"  
                           IsColorPreviewVisible="True" 
                           IsColorSpectrumVisible="True"
-                          Orientation="Horizontal"/>
+                          Orientation="Horizontal"
+                          HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="FavButton" Padding="24,24" Margin="48" CornerRadius="128" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="FavButton_Click">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE1CE;" FontSize="14"/>
+                <FontIcon x:Name="FavoriteIcon" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE1CF;" FontSize="14"
+                          Visibility="{x:Bind Palette.Color,Mode=OneWay,Converter={StaticResource Color2Fav}}"/>
+            </Grid>
+        </Button>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="760"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Palette.Orientation" Value="Horizontal"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Palette.Orientation" Value="Vertical"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
 </Page>

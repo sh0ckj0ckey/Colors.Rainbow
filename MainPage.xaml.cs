@@ -35,6 +35,7 @@ namespace Colors.Rainbow
         {
             ("windows", typeof(ColorsPage)),
             ("palette", typeof(PalettePage)),
+            ("favorites",typeof(FavoritesPage)),
             ("settings", typeof(SettingsPage)),
         };
 

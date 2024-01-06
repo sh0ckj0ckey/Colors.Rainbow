@@ -13,16 +13,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Center" Margin="0,-40,0,0">
-            <Image Width="80" Height="80" Stretch="Uniform" Source="/Assets/ColorsDotRainbow.png" Margin="0,0,0,8"/>
+            <Image Width="80" Height="80" Stretch="Uniform" Source="/Assets/logo_rainbow2.png" Margin="0,0,0,8"/>
             <TextBlock Text="Colors.Rainbow" FontFamily="Consolas" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" Opacity="0.7" CharacterSpacing="40"/>
             <TextBlock Text="{x:Bind _appVersion}" FontFamily="Consolas" HorizontalAlignment="Center" FontSize="16" Opacity="0.5" CharacterSpacing="40"/>
         </StackPanel>
-        <TextBlock Grid.Row="2"
-                   Text="2016-2023 sh0ckj0ckey."
-                   TextWrapping="WrapWholeWords"
-                   FontFamily="Consolas"
-                   VerticalAlignment="Bottom"
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,12" Opacity="0.7"/>
+        <TextBlock Grid.Row="2" Text="©2024 NoMewing." FontFamily="Consolas" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,12" Opacity="0.7" CharacterSpacing="36"/>
     </Grid>
 </Page>
