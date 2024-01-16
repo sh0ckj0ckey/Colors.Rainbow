@@ -38,7 +38,10 @@
             </muxc:ItemsRepeater>
         </ScrollViewer>
 
-        <Grid x:Name="SearchBox" Padding="4" HorizontalAlignment="Stretch" VerticalAlignment="Top" Translation="0,0,32" CornerRadius="8" Margin="40,20,40,20" Shadow="{StaticResource CommonShadow}" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid x:Name="SearchBox" Padding="2" HorizontalAlignment="Stretch" VerticalAlignment="Top" Translation="0,0,32" CornerRadius="8" Margin="40,20,40,20" Shadow="{StaticResource CommonShadow}">
+            <Grid.Background>
+                <AcrylicBrush TintLuminosityOpacity="0" TintOpacity="0" TintColor="Transparent" FallbackColor="{ThemeResource APPLICATION_BK}"/>
+            </Grid.Background>
             <TextBox Height="38" Padding="38,9,8,0" FontWeight="Medium" BorderThickness="0" x:Uid="Search" TextChanged="OnSearchTextChanged"/>
             <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xF78B;" FontSize="14" Margin="14,0,0,0" Opacity="0.7" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>

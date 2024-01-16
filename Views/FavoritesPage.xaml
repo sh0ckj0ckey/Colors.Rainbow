@@ -21,7 +21,7 @@
             <TextBlock x:Uid="Empty" FontWeight="Bold" Opacity="0.1" HorizontalAlignment="Center" CharacterSpacing="64"/>
         </StackPanel>
         <GridView Visibility="{x:Bind _viewModel.FavoriteColors.Count,Mode=OneWay,Converter={StaticResource Int2Vis}}" 
-                  HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                  HorizontalAlignment="Center" VerticalAlignment="Center"
                   ItemsSource="{x:Bind _viewModel.FavoriteColors,Mode=OneWay}" SelectionMode="None" IsItemClickEnabled="False">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:FavoriteColor">
