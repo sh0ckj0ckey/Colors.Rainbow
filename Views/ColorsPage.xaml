@@ -17,32 +17,36 @@
 
     <Grid>
         <ScrollViewer x:Name="WinColorsScrollViewer" Padding="20,0,18,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <muxc:ItemsRepeater Margin="0,88,0,20" HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind _viewModel.WindowsColors,Mode=OneWay}">
-                <muxc:ItemsRepeater.Layout>
-                    <muxc:UniformGridLayout Orientation="Horizontal" MinItemWidth="186" MinItemHeight="68" MinColumnSpacing="8" MinRowSpacing="8" ItemsStretch="Uniform"/>
-                </muxc:ItemsRepeater.Layout>
-                <DataTemplate x:DataType="model:WindowsColor">
-                    <Button Click="OnClickColorButton" Tag="{x:Bind Self}" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                        <Button.Content>
-                            <Grid Background="Transparent">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Border Grid.Column="0" Width="48" Height="48" CornerRadius="28" Margin="12,4,0,4" Background="{x:Bind Name}"/>
-                                <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="12,0" FontSize="14" Opacity="0.9" Text="{x:Bind Name}" CharacterSpacing="40"/>
-                            </Grid>
-                        </Button.Content>
-                    </Button>
-                </DataTemplate>
-            </muxc:ItemsRepeater>
+            <StackPanel Orientation="Vertical">
+                <Grid Background="Transparent" Height="88" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                <muxc:ItemsRepeater Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" ItemsSource="{x:Bind _viewModel.WindowsColors,Mode=OneWay}">
+                    <muxc:ItemsRepeater.Layout>
+                        <muxc:UniformGridLayout Orientation="Horizontal" MinItemWidth="186" MinItemHeight="68" MinColumnSpacing="8" MinRowSpacing="8" ItemsStretch="Uniform"/>
+                    </muxc:ItemsRepeater.Layout>
+                    <DataTemplate x:DataType="model:WindowsColor">
+                        <Button Click="OnClickColorButton" Tag="{x:Bind Self}" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                            <Button.Content>
+                                <Grid Background="Transparent">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Width="48" Height="48" CornerRadius="28" Margin="12,4,0,4" Background="{x:Bind Name}"/>
+                                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="12,0" FontSize="14" Opacity="0.9" Text="{x:Bind Name}" CharacterSpacing="40"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </DataTemplate>
+                </muxc:ItemsRepeater>
+                <Grid Background="Transparent" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+            </StackPanel>
         </ScrollViewer>
 
         <Grid x:Name="SearchBox" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Translation="0,0,32" CornerRadius="8" Margin="40,20,40,20" Shadow="{StaticResource CommonShadow}">
             <Grid.Background>
                 <AcrylicBrush TintLuminosityOpacity="0" TintOpacity="0" TintColor="Transparent" FallbackColor="{ThemeResource APPLICATION_BK}"/>
             </Grid.Background>
-            <TextBox Height="38" CornerRadius="8" Padding="38,9,8,0" FontWeight="Medium" BorderThickness="0" x:Uid="Search" TextChanged="OnSearchTextChanged"/>
+            <TextBox Height="48" CornerRadius="8" Padding="38,14,8,0" FontWeight="Medium" BorderThickness="0" x:Uid="Search" TextChanged="OnSearchTextChanged"/>
             <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xF78B;" FontSize="14" Margin="14,0,0,0" Opacity="0.7" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
 
