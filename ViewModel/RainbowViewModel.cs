@@ -9,6 +9,7 @@ using Colors.Rainbow.Helpers;
 using Colors.Rainbow.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Windows.UI;
+using Windows.UI.Xaml.Media;
 
 namespace Colors.Rainbow.ViewModel
 {
@@ -17,9 +18,7 @@ namespace Colors.Rainbow.ViewModel
         private static readonly Lazy<RainbowViewModel> lazy = new Lazy<RainbowViewModel>(() => new RainbowViewModel());
         public static RainbowViewModel Instance { get { return lazy.Value; } }
 
-
-        private ObservableCollection<WindowsColor> _windowsAllColors = new ObservableCollection<WindowsColor>();
-
+        private ObservableCollection<WindowsColor> _allWindowsColors = new ObservableCollection<WindowsColor>();
 
         private ObservableCollection<WindowsColor> _windowsColors = null;
         public ObservableCollection<WindowsColor> WindowsColors
@@ -28,6 +27,10 @@ namespace Colors.Rainbow.ViewModel
             set => SetProperty(ref _windowsColors, value);
         }
 
+        private HashSet<string> _favoriteColorsHex = new HashSet<string>();
+
+        public ObservableCollection<FavoriteColor> FavoriteColors { get; } = new ObservableCollection<FavoriteColor>();
+        
         private WindowsColor _SelectedWinColor;
         public WindowsColor SelectedWinColor
         {
@@ -35,61 +38,53 @@ namespace Colors.Rainbow.ViewModel
             set => SetProperty(ref _SelectedWinColor, value);
         }
 
-        private HashSet<string> _favoriteColorsHex = new HashSet<string>();
-
-        public ObservableCollection<FavoriteColor> FavoriteColors { get; } = new ObservableCollection<FavoriteColor>();
-
         public RainbowViewModel()
         {
-            try
-            {
-                InitRainbow();
-                InitFavorites();
-            }
-            catch { }
+            InitRainbow();
+            InitFavorites();
         }
 
         private void InitRainbow()
         {
-            try
+            _allWindowsColors.Clear();
+            Type t = typeof(Windows.UI.Colors);
+            foreach (PropertyInfo property in t.GetProperties())
             {
-                Type t = typeof(Windows.UI.Colors);
-                PropertyInfo[] properties = t.GetProperties();
-                foreach (PropertyInfo property in properties)
+                try
                 {
                     string method = "get_" + property.Name;
                     MethodInfo get_method = t.GetMethod(method);
-                    Color getColor = (Color)get_method.Invoke(this, null);
-                    WindowsColor ec = new WindowsColor
+                    Color color = (Color)get_method.Invoke(this, null);
+                    _allWindowsColors.Add(new WindowsColor
                     {
                         Name = property.Name,
-                        RValue = getColor.R,
-                        GValue = getColor.G,
-                        BValue = getColor.B,
-                        Hex = getColor.ToString(),
-                        VisualColor = getColor
-                    };
-                    _windowsAllColors.Add(ec);
+                        RValue = color.R,
+                        GValue = color.G,
+                        BValue = color.B,
+                        Hex = color.ToString(),
+                        SolidColor = new SolidColorBrush(color),
+                    });
                 }
-                WindowsColors = _windowsAllColors;
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
             }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-            }
+
+            this.WindowsColors = _allWindowsColors;
         }
 
         private async void InitFavorites()
         {
             try
             {
-                FavoriteColors.Clear();
+                this.FavoriteColors.Clear();
                 string json = await StorageHelper.ReadFileAsync("favorites");
                 List<FavoriteColor> favorites = JsonSerializer.Deserialize<List<FavoriteColor>>(json);
                 foreach (var item in favorites)
                 {
-                    FavoriteColors.Add(item);
                     _favoriteColorsHex.Add(item.Hex);
+                    this.FavoriteColors.Add(item);
                 }
             }
             catch (Exception e)
@@ -102,12 +97,8 @@ namespace Colors.Rainbow.ViewModel
         {
             if (!_favoriteColorsHex.Contains(hex))
             {
-                FavoriteColors.Insert(0, new FavoriteColor()
-                {
-                    Hex = hex,
-                });
                 _favoriteColorsHex.Add(hex);
-
+                this.FavoriteColors.Insert(0, new FavoriteColor() { Hex = hex });
                 SaveFavorites();
             }
         }
@@ -115,7 +106,7 @@ namespace Colors.Rainbow.ViewModel
         public void RemoveFavorite(string hex)
         {
             FavoriteColor remove = null;
-            foreach (var favorite in FavoriteColors)
+            foreach (var favorite in this.FavoriteColors)
             {
                 if (favorite.Hex == hex)
                 {
@@ -125,8 +116,8 @@ namespace Colors.Rainbow.ViewModel
 
             if (remove != null)
             {
-                FavoriteColors.Remove(remove);
                 _favoriteColorsHex.Remove(remove.Hex);
+                this.FavoriteColors.Remove(remove);
                 SaveFavorites();
             }
         }
@@ -140,7 +131,7 @@ namespace Colors.Rainbow.ViewModel
         {
             try
             {
-                var favorites = FavoriteColors.ToList();
+                var favorites = this.FavoriteColors.ToList();
                 string json = JsonSerializer.Serialize(favorites);
                 await StorageHelper.WriteFileAsync("favorites", json);
             }
@@ -157,15 +148,18 @@ namespace Colors.Rainbow.ViewModel
                 key = key.Trim();
                 if (string.IsNullOrWhiteSpace(key))
                 {
-                    WindowsColors = _windowsAllColors;
+                    this.WindowsColors = _allWindowsColors;
                 }
                 else
                 {
-                    var filteredColor = _windowsAllColors.Where(p => p.Name.Contains(key, StringComparison.CurrentCultureIgnoreCase)).ToList();
-                    WindowsColors = new ObservableCollection<WindowsColor>(filteredColor);
+                    var filteredColor = _allWindowsColors.Where(p => p.Name.Contains(key, StringComparison.CurrentCultureIgnoreCase)).ToList();
+                    this.WindowsColors = new ObservableCollection<WindowsColor>(filteredColor);
                 }
             }
-            catch { }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
 
     }

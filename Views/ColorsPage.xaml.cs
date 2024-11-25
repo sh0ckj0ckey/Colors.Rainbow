@@ -32,7 +32,6 @@ namespace Colors.Rainbow.Views
 
             CommonShadow.Receivers.Add(WinColorsScrollViewer);
             ColorInfoShadow.Receivers.Add(BackgroundGrid);
-
             HideGridAnim.Completed += (s, e) =>
             {
                 ColorInfoGrid.Visibility = Visibility.Collapsed;
@@ -61,6 +60,12 @@ namespace Colors.Rainbow.Views
             HideGridAnim.Begin();
         }
 
+        public void ShowColorInfo()
+        {
+            ColorInfoGrid.Visibility = Visibility.Visible;
+            ShowGridAnim.Begin();
+        }
+
         private void FavButton_Click(object sender, RoutedEventArgs e)
         {
             if (RainbowViewModel.Instance.CheckFavorite(RainbowViewModel.Instance.SelectedWinColor.Hex))
@@ -77,24 +82,9 @@ namespace Colors.Rainbow.Views
 
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
-                dataPackage.SetText(RainbowViewModel.Instance.SelectedWinColor.Hex);
-                Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
-            }
-            catch { }
-        }
-
-        public void ShowColorInfo()
-        {
-            SolidColorBrush solidColorBrush = new SolidColorBrush(RainbowViewModel.Instance.SelectedWinColor.VisualColor);
-            InfoColor1Ellipse.Fill = solidColorBrush;
-            InfoColor2Ellipse.Fill = solidColorBrush;
-            InfoColor3Ellipse.Fill = solidColorBrush;
-
-            ColorInfoGrid.Visibility = Visibility.Visible;
-            ShowGridAnim.Begin();
+            Windows.ApplicationModel.DataTransfer.DataPackage dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
+            dataPackage.SetText(RainbowViewModel.Instance.SelectedWinColor.Hex);
+            Windows.ApplicationModel.DataTransfer.Clipboard.SetContent(dataPackage);
         }
 
     }

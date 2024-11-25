@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="22189NoMewing.Colors.Rainbow" Publisher="CN=E6D8FAFA-3EF4-4E47-B885-52144C67BFF5" Version="3.2.1.0" />
+  <Identity Name="22189NoMewing.Colors.Rainbow" Publisher="CN=E6D8FAFA-3EF4-4E47-B885-52144C67BFF5" Version="3.2.2.0" />
   <mp:PhoneIdentity PhoneProductId="9169f391-498a-43a8-a52c-c41cd6ec8c5a" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>ms-resource:DisplayName</DisplayName>
@@ -16,7 +16,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Colors.Rainbow.App">
       <uap:VisualElements DisplayName="ms-resource:DisplayName" Square150x150Logo="Assets\Manifests\Square150x150Logo.png" Square44x44Logo="Assets\Manifests\Square44x44Logo.png" Description="ms-resource:DisplayDesc" BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Manifests\Wide310x150Logo.png" Square310x310Logo="Assets\Manifests\LargeTile.png" Square71x71Logo="Assets\Manifests\SmallTile.png">
+        <uap:DefaultTile Wide310x150Logo="Assets\Manifests\Wide310x150Logo.png" Square310x310Logo="Assets\Manifests\LargeTile.png" Square71x71Logo="Assets\Manifests\SmallTile.png" ShortName="ms-resource:DisplayName">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />

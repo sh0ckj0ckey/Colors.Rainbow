@@ -1,4 +1,7 @@
-﻿namespace Colors.Rainbow.Models
+﻿using Windows.UI;
+using Windows.UI.Xaml.Media;
+
+namespace Colors.Rainbow.Models
 {
     public class WindowsColor
     {
@@ -7,12 +10,6 @@
         public double GValue { get; set; }
         public double BValue { get; set; }
         public string Hex { get; set; }
-        public Windows.UI.Color VisualColor { get; set; }
-        public WindowsColor Self { get; set; }
-
-        public WindowsColor()
-        {
-            Self = this;
-        }
+        public SolidColorBrush SolidColor { get; set; }
     }
 }

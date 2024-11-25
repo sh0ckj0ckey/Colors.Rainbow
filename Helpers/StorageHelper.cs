@@ -41,7 +41,9 @@ namespace Colors.Rainbow.Helpers
             try
             {
                 if (applicationFolder == null)
+                {
                     applicationFolder = await GetDataFolder();
+                }
 
                 var storageFile = await applicationFolder.GetFileAsync(fileName);
 
@@ -54,7 +56,7 @@ namespace Colors.Rainbow.Helpers
                     }
                 }
             }
-            catch { }
+            catch (Exception ex) { System.Diagnostics.Trace.WriteLine(ex); }
             return text;
         }
 
@@ -90,10 +92,10 @@ namespace Colors.Rainbow.Helpers
                     {
                         await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(1));
                     }
-                    catch { }
+                    catch (Exception ex) { System.Diagnostics.Trace.WriteLine(ex); }
                 }
             }
-            catch { }
+            catch (Exception ex) { System.Diagnostics.Trace.WriteLine(ex); }
             return false;
         }
     }
