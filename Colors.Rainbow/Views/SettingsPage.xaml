@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Center" Margin="0,-40,0,0">
-            <Image Width="80" Height="80" Stretch="Uniform" Source="/Assets/logo_rainbow.png" Margin="0,0,0,8"/>
+            <Image Width="117" Height="117" Stretch="Uniform" Source="/Assets/logo_rainbow.png" Margin="0,0,0,8"/>
             <TextBlock Text="Colors.Rainbow" FontFamily="Consolas" HorizontalAlignment="Center" FontWeight="Medium" FontSize="20" Opacity="0.7" CharacterSpacing="40"/>
             <TextBlock Text="{x:Bind _appVersion}" FontFamily="Consolas" HorizontalAlignment="Center" FontSize="16" Opacity="0.5" CharacterSpacing="40"/>
         </StackPanel>
