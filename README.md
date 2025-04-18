@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="Assets/logo_rainbow2.png" alt="logo" height="96" width="96"/>
+    <img src="Colors.Rainbow/Assets/logo_rainbow.png" alt="logo" height="72" width="72"/>
 </p> 
 
 <h3 align="center">查颜观色</h3>
@@ -10,4 +10,4 @@
 	<img src="https://get.microsoft.com/images/zh-cn%20light.svg" width="200"/>
 </a>
 
-![screenshot_colors.png](Assets/screenshot_colors.png)
+![screenshot_colors.png](Colors.Rainbow/Assets/screenshot_colors.png)

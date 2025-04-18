@@ -56,7 +56,7 @@
             <StackPanel x:Name="AppTitleLogo" Margin="24,0,0,0" Opacity="1" Orientation="Horizontal" VerticalAlignment="Center" IsHitTestVisible="False">
                 <Image HorizontalAlignment="Left" VerticalAlignment="Center" Width="22" Height="22">
                     <Image.Source>
-                        <BitmapImage UriSource="Assets/logo_rainbow2.png" DecodePixelHeight="44"/>
+                        <BitmapImage UriSource="Assets/logo_rainbow.png" DecodePixelHeight="44"/>
                     </Image.Source>
                 </Image>
                 <TextBlock Text="Colors.Rainbow" FontFamily="Consolas" FontSize="16" VerticalAlignment="Center" Margin="28,0,0,0"/>
