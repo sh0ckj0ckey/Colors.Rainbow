@@ -31,7 +31,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Border Grid.Column="0" Width="48" Height="48" CornerRadius="24" Background="{x:Bind SolidColor}"/>
+                                    <Ellipse Grid.Column="0" Width="48" Height="48" Fill="{x:Bind SolidColor}"/>
                                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="14" Text="{x:Bind Name}"/>
                                 </Grid>
                             </Button.Content>
