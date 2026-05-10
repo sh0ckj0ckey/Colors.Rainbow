@@ -30,7 +30,7 @@
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
-    <AppxPackageDir>C:\Users\Shock Jockey\Desktop\Rainbow\</AppxPackageDir>
+    <AppxPackageDir>C:\Users\sh0ckj0ckey\Desktop\</AppxPackageDir>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
