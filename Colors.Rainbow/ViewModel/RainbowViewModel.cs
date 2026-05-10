@@ -30,7 +30,7 @@ namespace Colors.Rainbow.ViewModel
         private HashSet<string> _favoriteColorsHex = new HashSet<string>();
 
         public ObservableCollection<FavoriteColor> FavoriteColors { get; } = new ObservableCollection<FavoriteColor>();
-        
+
         private WindowsColor _SelectedWinColor;
         public WindowsColor SelectedWinColor
         {
