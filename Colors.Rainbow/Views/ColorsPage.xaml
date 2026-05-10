@@ -18,7 +18,7 @@
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <ScrollViewer x:Name="WinColorsScrollViewer" Padding="20,0,20,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel>
-                <Border Height="88"/>
+                <Border Height="124"/>
                 <muxc:ItemsRepeater ItemsSource="{x:Bind _viewModel.WindowsColors,Mode=OneWay}">
                     <muxc:ItemsRepeater.Layout>
                         <muxc:UniformGridLayout Orientation="Horizontal" MinItemWidth="186" MinItemHeight="68" MinColumnSpacing="8" MinRowSpacing="8" ItemsStretch="Uniform"/>
@@ -31,7 +31,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <Ellipse Grid.Column="0" Width="48" Height="48" Fill="{x:Bind SolidColor}"/>
+                                    <Ellipse Grid.Column="0" Width="42" Height="42" Fill="{x:Bind SolidColor}"/>
                                     <TextBlock Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="14" Text="{x:Bind Name}"/>
                                 </Grid>
                             </Button.Content>
@@ -42,11 +42,11 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Grid x:Name="SearchBox" Padding="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Translation="0,0,32" CornerRadius="8" Margin="40,20,40,20" BorderBrush="{ThemeResource APPLICATION_BD}" BorderThickness="1" Shadow="{StaticResource CommonShadow}">
+        <Grid x:Name="SearchBox" Padding="0" Translation="0,0,32" CornerRadius="4" Margin="42" BorderBrush="{ThemeResource APPLICATION_BD}" BorderThickness="1" Shadow="{StaticResource CommonShadow}" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <Grid.Background>
                 <AcrylicBrush TintOpacity="0.8" TintColor="{ThemeResource APPLICATION_BK}" FallbackColor="{ThemeResource APPLICATION_BK}"/>
             </Grid.Background>
-            <TextBox Height="48" CornerRadius="8" Padding="38,14,8,0" FontWeight="Medium" BorderThickness="0" x:Uid="Search" TextChanged="OnSearchTextChanged"/>
+            <TextBox Height="48" CornerRadius="4" Padding="38,14,8,0" FontWeight="Medium" BorderThickness="0" x:Uid="Search" TextChanged="OnSearchTextChanged"/>
             <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xF78B;" FontSize="14" Margin="14,0,0,0" Opacity="0.7" IsHitTestVisible="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         </Grid>
 

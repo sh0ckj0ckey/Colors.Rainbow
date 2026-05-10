@@ -15,28 +15,28 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <muxc:NavigationView x:Name="MainNavigationView" Grid.Row="1" Background="Transparent" CompactPaneLength="68" Canvas.ZIndex="0" PaneDisplayMode="LeftCompact" 
+        <muxc:NavigationView x:Name="MainNavigationView" Grid.Row="1" Background="Transparent" CompactPaneLength="56" Canvas.ZIndex="0" PaneDisplayMode="LeftCompact" 
                              IsPaneToggleButtonVisible="False" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsTabStop="False" IsTitleBarAutoPaddingEnabled="True"
                              Loaded="MainNavigationView_Loaded" ItemInvoked="MainNavigationView_ItemInvoked">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem IsSelected="True" Height="64" Width="68" Tag="windows" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
+                <muxc:NavigationViewItem IsSelected="True" Height="64" Width="56" Tag="windows" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE10F;" FontSize="20" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Height="64" Width="68" Tag="palette" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
+                <muxc:NavigationViewItem Height="64" Width="56" Tag="palette" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE790;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem Height="64" Width="68" Tag="favorites" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
+                <muxc:NavigationViewItem Height="64" Width="56" Tag="favorites" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE1CB;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.FooterMenuItems>
-                <muxc:NavigationViewItem Height="64" Width="68" Tag="settings" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
+                <muxc:NavigationViewItem Height="64" Width="56" Tag="settings" FocusVisualPrimaryThickness="0" FocusVisualSecondaryThickness="0">
                     <muxc:NavigationViewItem.Content>
                         <FontIcon FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="&#xE946;" FontSize="18" Margin="-4,0,4,0"/>
                     </muxc:NavigationViewItem.Content>
@@ -52,8 +52,7 @@
         </muxc:NavigationView>
         <Grid x:Name="AppTitleBarGrid" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="1"/>
         <Grid x:Name="TitleBarFeatureGrid" Height="48" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Canvas.ZIndex="1" IsHitTestVisible="True">
-            <!--标题Logo-->
-            <StackPanel x:Name="AppTitleLogo" Margin="24,0,0,0" Opacity="1" Orientation="Horizontal" VerticalAlignment="Center" IsHitTestVisible="False">
+            <StackPanel x:Name="AppTitleLogo" Margin="18,0,0,0" Opacity="1" Orientation="Horizontal" VerticalAlignment="Center" IsHitTestVisible="False">
                 <Image HorizontalAlignment="Left" VerticalAlignment="Center" Width="22" Height="22">
                     <Image.Source>
                         <BitmapImage UriSource="Assets/logo_rainbow.png" DecodePixelHeight="44"/>
